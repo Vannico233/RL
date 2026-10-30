@@ -1,0 +1,13 @@
+{
+  "status": "pass",
+  "commit": "ad818a2cdfafaf4305ac40c4acd892a211978bc2",
+  "checks": {
+    "commit_matches": true,
+    "RolloutScheduler_hooks": true,
+    "MultiTurnScheduler_hooks": true,
+    "dynamic_image_override_contract": true,
+    "per_sample_encoder_hook": true,
+    "callback_registry": true
+  },
+  "scope": "Static source interface inspection only; does not validate GPU imports, generation, masks, or updates at runtime."
+}

@@ -1,0 +1,13 @@
+-c constraints-server.txt
+torch
+torchvision
+torchaudio
+vllm
+transformers
+peft
+trl
+accelerate
+datasets
+qwen-vl-utils
+decord
+ms-swift @ git+https://github.com/modelscope/ms-swift.git@ad818a2cdfafaf4305ac40c4acd892a211978bc2

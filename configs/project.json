@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "model_id": "Qwen/Qwen2.5-VL-7B-Instruct",
+  "model_revision": "cc594898137f460bfe9f0759e9844b3ce807cfb5",
+  "dataset_id": "ahmed-masry/ChartQA",
+  "dataset_revision": "af8b6f5c08c95085271561c2a3f9d15f2b5a9031",
+  "dataset_archive": "ChartQA Dataset.zip",
+  "framework": "ms-swift",
+  "framework_version": "4.6.0",
+  "framework_commit": "ad818a2cdfafaf4305ac40c4acd892a211978bc2",
+  "hardware": {
+    "gpu_count": 2,
+    "gpu_model": "H200",
+    "reported_memory_gb_per_gpu": 143,
+    "source": "user_reported_not_server_verified",
+    "trainer_gpu": 0,
+    "rollout_gpu": 1
+  },
+  "vision": {
+    "whole_max_pixels": 1003520,
+    "high_resolution_max_pixels": 2007040,
+    "crop_max_pixels": 501760,
+    "min_pixels": 3136,
+    "patch_grid_factor": 28
+  },
+  "interaction": {"max_tool_attempts": 2, "max_generation_turns": 3},
+  "gpu_validation": "pending_user_server_run"
+}
