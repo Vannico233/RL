@@ -2,8 +2,8 @@
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 python -c 'import sys, platform; assert platform.system() == "Linux", "Training environment requires Linux"; assert sys.version_info[:2] == (3, 11), "Activate the Python 3.11 chart-rl Conda environment"'
-python -m pip install -r requirements-server.txt
-python -m pip install -e .
+python -m pip install --timeout 60 --retries 5 -r requirements-server.txt
+python -m pip install --timeout 60 --retries 5 -e .
 python -m pip check
 mkdir -p runs/environment
 python -m pip freeze > runs/environment/pip-freeze.txt

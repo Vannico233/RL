@@ -22,6 +22,22 @@ python scripts/preflight.py
 
 默认一张卡训练、一张卡提供 vLLM 生成服务。安装与下载需要访问 PyPI、GitHub 和 Hugging Face；如服务器使用代理，应配置服务器自己的网络设置，不复制开发电脑的地址。模型为公开资源，不需要在代码中写入账号密码。
 
+### 安装时出现 Git `early EOF` / `unexpected eof`
+
+旧版安装文件通过 Git 克隆 ms-swift；此错误表示源码传输中断，尚未进入依赖编译。PyPI 镜像不会接管 GitHub 的 Git 请求。更新项目后重新安装：
+
+```bash
+git pull --ff-only
+conda activate chart-rl
+bash scripts/install_server.sh
+```
+
+当前安装直接下载 GitHub 官方固定 commit 的约 16 MiB 源码压缩包，核查 SHA256，再由 pip 构建安装；不克隆历史。源码版本仍为 4.6.0 / `ad818a2cdfafaf4305ac40c4acd892a211978bc2`。preflight 同时支持旧的固定 Git 安装和新的哈希验证压缩包安装。
+
+压缩包仍需要服务器能够访问 `codeload.github.com`；它解决克隆过程带来的额外传输，不保证所有网络问题消失。如果仍失败，保留新的下载错误继续检查网络或代理。不要为了这类传输中断关闭 SSL 校验，也不需要重建整个 Conda 环境。
+
+若未来 GitHub 更改压缩格式，压缩包哈希可能变化；应重新核查源码后更新固定哈希，不直接跳过校验。
+
 ## 2. 下载固定模型与数据
 
 ```bash

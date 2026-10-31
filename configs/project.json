@@ -8,6 +8,8 @@
   "framework": "ms-swift",
   "framework_version": "4.6.0",
   "framework_commit": "ad818a2cdfafaf4305ac40c4acd892a211978bc2",
+  "framework_source_url": "https://codeload.github.com/modelscope/ms-swift/tar.gz/ad818a2cdfafaf4305ac40c4acd892a211978bc2",
+  "framework_archive_sha256": "28b52ed63149b58bab4b0e6bb3441afe8c9c5a5cb23b648fcd5e488b7b2e9967",
   "hardware": {
     "gpu_count": 2,
     "gpu_model": "H200",

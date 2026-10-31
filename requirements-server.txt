@@ -10,4 +10,4 @@ accelerate
 datasets
 qwen-vl-utils
 decord
-ms-swift @ git+https://github.com/modelscope/ms-swift.git@ad818a2cdfafaf4305ac40c4acd892a211978bc2
+ms-swift @ https://codeload.github.com/modelscope/ms-swift/tar.gz/ad818a2cdfafaf4305ac40c4acd892a211978bc2#sha256=28b52ed63149b58bab4b0e6bb3441afe8c9c5a5cb23b648fcd5e488b7b2e9967

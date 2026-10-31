@@ -1,0 +1,18 @@
+{
+  "status": "pass",
+  "timestamp_utc": "2026-10-31T14:33:41.375480+00:00",
+  "version": "4.6.0",
+  "source": {
+    "verified": true,
+    "kind": "source_archive",
+    "commit": "ad818a2cdfafaf4305ac40c4acd892a211978bc2",
+    "archive_sha256": "28b52ed63149b58bab4b0e6bb3441afe8c9c5a5cb23b648fcd5e488b7b2e9967"
+  },
+  "installed_files_match_pinned_git_blobs": {
+    "swift/rollout/multi_turn.py": true,
+    "swift/rl_core/data.py": true,
+    "swift/rlhf_trainers/grpo_trainer.py": true,
+    "swift/rlhf_trainers/utils.py": true
+  },
+  "scope": "Actual download, hash check, wheel build and isolated --no-deps installation; GPU dependencies, imports and training not tested."
+}

@@ -9,6 +9,8 @@ import platform
 import subprocess
 import sys
 
+from chart_rl.framework_source import verify_framework_source
+
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -28,16 +30,16 @@ def main():
         except importlib.metadata.PackageNotFoundError:
             versions[name] = None
         checks["version_" + name] = versions[name] is not None and versions[name].split("+")[0] == expected
-    commit = None
+    direct = {}
     try:
         swift = importlib.metadata.distribution("ms-swift")
         versions["ms-swift"] = swift.version
         direct = json.loads(swift.read_text("direct_url.json") or "{}")
-        commit = direct.get("vcs_info", {}).get("commit_id")
     except importlib.metadata.PackageNotFoundError:
         versions["ms-swift"] = None
+    source = verify_framework_source(direct, config)
     checks["framework_version"] = versions["ms-swift"] == config["framework_version"]
-    checks["framework_commit"] = commit == config["framework_commit"]
+    checks["framework_commit"] = source["verified"]
     gpu_info, cuda_error, runtime = [], None, None
     if versions.get("torch") and checks["linux"]:
         try:
@@ -71,7 +73,8 @@ def main():
     checks["pip_check"] = pip_check.returncode == 0
     report = {"status": "pass" if all(checks.values()) else "needs_attention", "checks": checks,
               "python": platform.python_version(), "system": platform.platform(), "versions": versions,
-              "framework_commit": commit, "torch_cuda_runtime": runtime, "gpus": gpu_info, "error": cuda_error,
+              "framework_commit": source["commit"], "framework_source": source,
+              "torch_cuda_runtime": runtime, "gpus": gpu_info, "error": cuda_error,
               "pip_check": pip_check.stdout.strip(),
               "note": "Passing environment checks does not prove VLM rollout, GRPO update, or experimental gains."}
     output = Path(args.output)

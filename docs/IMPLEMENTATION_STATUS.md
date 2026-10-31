@@ -34,6 +34,8 @@
 
 框架源码已核查至正式版 v4.6.0，commit `ad818a2cdfafaf4305ac40c4acd892a211978bc2`。候选 Python 包版本已核查存在性与主要依赖范围，完整 GPU 组合尚未实测。
 
+2026-10-31：针对 GitHub 克隆中断，安装入口改为固定提交的官方源码压缩包，并固定 SHA256。已实际完成下载、构建和独立目录的无依赖安装，核对关键源码与固定 Git 提交一致；记录见 [`framework-source-install-validation.json`](../reports/framework-source-install-validation.json)。这项检查不包括 GPU 依赖安装或框架运行时导入。
+
 静态接口记录见 [`swift-source-contract.json`](../reports/swift-source-contract.json)。它不能验证运行时导入、CUDA 算子、实际损失掩码或权重同步；这些必须通过服务器日志与 G1 验证。
 
 最初任务书中的四卡、80GB、3B 是访谈阶段假设；本次实现以用户后续确认的 **2×H200、约 143GB/卡** 为准，选择 7B 语言侧 LoRA，保留一周范围。科研实验的完成定义不因代码交付而改变。
